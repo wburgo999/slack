@@ -18,7 +18,18 @@ app.use(express.static(__dirname + '/public'));
 // set the home page route
 app.post('/', function(req, res) {
   console.log(req.body);
-  res.send('balh blah' + req.body.text);
+  var num = parseInt(req.body.text) || 'bad input';
+  if (num === 'bad input') {
+    res.send(num);
+  } else {
+    var total = 1;
+    while(num > 1) {
+      total *= num;
+      num--;
+    }
+    res.send(num)
+  }
+  //res.send('balh blah' + req.body.text);
 })
 app.get('/', function(req, res) {
 
