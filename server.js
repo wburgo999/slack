@@ -1,5 +1,9 @@
 var express = require('express');
-var app = express();
+var bodyParser     =        require("body-parser");
+var app            =        express();
+app.use(bodyParser.json())
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -12,6 +16,10 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 // set the home page route
+app.post('/', function(req, res) {
+  console.log(req.body);
+  res.send(req.body);
+})
 app.get('/', function(req, res) {
 
 	// ejs render automatically looks in the views folder
