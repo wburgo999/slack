@@ -19,6 +19,8 @@ app.use(express.static(__dirname + '/public'));
 app.post('/', function(req, res) {
   console.log(req.body);
   var num = parseInt(req.body.text) || 'bad input';
+  console.log(num);
+  // res.send(num + '');
   if (num === 'bad input') {
     res.send(num);
   } else {
@@ -27,7 +29,7 @@ app.post('/', function(req, res) {
       total *= num;
       num--;
     }
-    res.send(num)
+    res.send(total + '')
   }
   //res.send('balh blah' + req.body.text);
 })
